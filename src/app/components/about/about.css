@@ -1,0 +1,149 @@
+/* --- TUS ESTILOS EXISTENTES PARA BARRAS --- */
+.h-0\.5.bg-gray-900 {
+  position: relative;
+}
+
+.skill-bar-shine {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: growBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.skill-bar-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -200%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 40%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.4) 60%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  animation: shineEffect 2.5s ease-out 1.3s 1;
+  z-index: 10;
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -200%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes growBar {
+  0% {
+    width: 0% !important;
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.skill-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.skill-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.skill-item:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.skill-item:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+.skill-item:nth-child(4) {
+  animation-delay: 0.35s;
+}
+
+.skill-item:nth-child(5) {
+  animation-delay: 0.45s;
+}
+
+.skill-item:nth-child(6) {
+  animation-delay: 0.55s;
+}
+
+.skill-item:nth-child(7) {
+  animation-delay: 0.65s;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- NUEVOS ESTILOS PARA LA MARQUESINA (Running Text) --- */
+
+/* Animación de desplazamiento infinito */
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+
+/* Animación invertida (opcional) */
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+  width: max-content;
+}
+
+/* Pausar animación al hacer hover (mejora UX) */
+.hover\:pause:hover {
+  animation-play-state: paused;
+}
+
+/* Keyframes: Mueve el track el 50% de su ancho total */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Máscara de gradiente para suavizar bordes (Efecto Awwwards) */
+.marquee-mask {
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+}

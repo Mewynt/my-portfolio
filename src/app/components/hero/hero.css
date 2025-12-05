@@ -1,0 +1,96 @@
+/* Video de fondo optimizado */
+video {
+  object-fit: cover;
+  filter: brightness(0.85);
+  /* Oscurece ligeramente para mejor contraste */
+}
+
+/* Botones estilo Apple */
+.apple-button-primary,
+.apple-button-secondary {
+  font-size: 17px;
+  letter-spacing: -0.022em;
+  min-width: 200px;
+  transform: translateY(0);
+}
+
+.apple-button-primary:hover,
+.apple-button-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación de entrada sutil */
+section>div {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación del indicador de scroll */
+@keyframes scrollDot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.scroll-dot {
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+/* Fade suave del indicador de scroll */
+.scroll-indicator {
+  animation: fadeIn 1.5s ease-out 0.8s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive: ajustar overlay en móvil */
+@media (max-width: 768px) {
+  video {
+    filter: brightness(0.75);
+  }
+
+  .absolute.inset-0.bg-black\/20 {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Mejorar visibilidad del indicador en móvil */
+@media (max-width: 640px) {
+  .animate-bounce {
+    animation-duration: 1.5s;
+  }
+}

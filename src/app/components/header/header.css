@@ -1,0 +1,84 @@
+/* header.css */
+
+/* ========================================
+   ANIMACIONES DEL BOTÓN HAMBURGUESA
+   ======================================== */
+
+/* Efecto de scale al hacer click en el botón */
+button:active {
+  transform: scale(0.95);
+}
+
+button {
+  transition: transform 0.1s ease;
+}
+
+/* ========================================
+   ANIMACIONES DEL MENÚ MÓVIL
+   ======================================== */
+
+/* Animación slide-down para el contenedor del menú */
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
+
+/* Animación fade-in para cada item del menú (escalonado) */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* ========================================
+   MEJORAS VISUALES ADICIONALES
+   ======================================== */
+
+/* Transición suave para los links del menú móvil */
+a {
+  position: relative;
+}
+
+/* Opcional: Efecto de línea al hacer hover en los links */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Backdrop blur suave (opcional) */
+.md\:hidden.py-4 {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
