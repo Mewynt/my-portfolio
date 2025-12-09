@@ -11,13 +11,16 @@ import { CommonModule } from '@angular/common';
 export class AboutComponent {
 
   // Información personal
-  descripcionCorta = 'Desarrollador apasionado por crear soluciones web innovadoras';
+  descripcionCorta = 'Developer passionate about creating and constantly learning new technologies';
 
-  descripcionLarga = `Soy un desarrollador con experiencia en la creación de aplicaciones web modernas y 
-  escalables. Me encanta aprender nuevas tecnologías y enfrentar desafíos que me permitan crecer 
-  profesionalmente. Mi enfoque está en escribir código limpio, mantenible y eficiente.`;
+  descripcionLarga: string[] = [`I'm Guillermo Aliaga, a Full Stack Developer from Lima, Peru, focused on creating efficient, maintainable web solutions aligned with business needs.`,
 
-  edad = 25;
+    `I have experience as a Level 2 Technical Support Specialist at Intercorp, Banco Ripley, and Saga Falabella, which allows me to understand how systems operate in production and develop more stable and reliable software`,
+
+    `I work on end-to-end application development, integrating modern frontends, scalable backends, and best practices to deliver robust products from day one.`
+  ];
+
+  edad = 19;
   ubicacion = 'Lima, Perú';
   email = 'guillermoaliagamatencio@gmail.com';
 
@@ -25,28 +28,28 @@ export class AboutComponent {
   experiencia = [
     {
       years: '2+',
-      descripcion: 'Años de experiencia'
+      descripcion: 'Years of experience'
     },
     {
       years: '10+',
-      descripcion: 'Proyectos completados'
+      descripcion: 'Completed projects'
     },
     {
       years: '5+',
-      descripcion: 'Tecnologías dominadas'
+      descripcion: 'Mastered technologies'
     }
   ];
 
   // Intereses/hobbies
   intereses = [
-    '💻 Desarrollo Web',
-    '🎨 Diseño UI/UX',
-    '📚 Aprendizaje continuo',
+    '💻 Web Development',
+    '🎨 UI/UX Design',
+    '📚 Lifelong Learning',
     '🎮 Gaming',
-    '🎵 Música',
-    '✈️ Viajar',
-    '📷 Fotografía',
-    '☕ Café de especialidad'
+    '🎵 Music',
+    '✈️ Traveling',
+    '📷 Photography',
+    '☕ Specialty Coffee'
   ];
 
   // Helpers para separar emoji del texto (Igual que en Skills)

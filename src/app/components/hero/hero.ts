@@ -13,10 +13,6 @@ export class HeroComponent implements AfterViewInit {
   titulo = 'Fullstack Developer';
   descripcion = 'Apasionado por crear experiencias web increíbles con Angular y las últimas tecnologías.';
 
-  // URLs
-  cvUrl = '#';
-  linkedinUrl = '#';
-  githubUrl = '#';
   @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit() {
@@ -51,8 +47,10 @@ export class HeroComponent implements AfterViewInit {
 
   // Método para descargar CV
   descargarCV() {
-    console.log('Descargando CV...');
-    // Aquí implementaremos la descarga real después
+    const link = document.createElement('a');
+    link.href = 'assets/cv/CV-GUILLERMO-ALIAGA.pdf';
+    link.download = 'CV-GUILLERMO-ALIAGA.pdf';
+    link.click();
   }
 
   // Método para ir a contacto

@@ -22,11 +22,11 @@ interface Proyecto {
 })
 export class ProjectsComponent {
   // Categoría seleccionada (signal reactivo)
-  categoriaSeleccionada = signal<string>('todas');
+  categoriaSeleccionada = signal<string>('all');
 
   // Lista de categorías disponibles
   categorias = [
-    { id: 'todas', nombre: 'Todas' },
+    { id: 'all', nombre: 'All' },
     { id: 'web', nombre: 'Web' },
     { id: 'mobile', nombre: 'Mobile' },
     { id: 'fullstack', nombre: 'Full Stack' }
@@ -99,7 +99,7 @@ export class ProjectsComponent {
   proyectosFiltrados = computed(() => {
     const categoria = this.categoriaSeleccionada();
 
-    if (categoria === 'todas') {
+    if (categoria === 'all') {
       return this.proyectos;
     }
 

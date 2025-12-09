@@ -1,54 +1,46 @@
-/* --- TUS ESTILOS EXISTENTES PARA BARRAS --- */
-.h-0\.5.bg-gray-900 {
-  position: relative;
+/* Prevenir overflow */
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-.skill-bar-shine {
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* --- ESTILOS PARA BARRAS (CORREGIDO) --- */
+
+/* Contenedor de la barra */
+.h-0\.5 {
   position: relative;
+  width: 100%;
+  height: 2px !important;
+  /* Forzar altura */
+  background: rgb(17, 17, 19);
+  border-radius: 9999px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  animation: growBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.skill-bar-shine::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -200%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0.4) 60%,
-      transparent 100%);
-  transform: skewX(-25deg);
-  animation: shineEffect 2.5s ease-out 1.3s 1;
-  z-index: 10;
-}
 
-@keyframes shineEffect {
-  0% {
-    left: -200%;
-  }
-
-  100% {
-    left: 200%;
-  }
-}
-
+/* Animación de crecimiento */
 @keyframes growBar {
-  0% {
-    width: 0% !important;
+  from {
+    transform: scaleX(0);
     opacity: 0.7;
   }
 
-  100% {
+  to {
+    transform: scaleX(1);
     opacity: 1;
   }
 }
 
+
+/* Animación de fade-in para cada skill */
 .skill-item {
   opacity: 0;
   animation: fadeInUp 0.5s ease-out forwards;
@@ -83,33 +75,28 @@
 }
 
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(15px);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* --- NUEVOS ESTILOS PARA LA MARQUESINA (Running Text) --- */
+/* --- MARQUESINA (Running Text) --- */
 
-/* Animación de desplazamiento infinito */
 .animate-marquee {
   animation: marquee 35s linear infinite;
-  /* El width debe ser max-content para permitir que los hijos fluyan */
   width: max-content;
 }
 
-/* Pausar animación al hacer hover (mejora UX) */
 .hover\:pause:hover {
   animation-play-state: paused;
 }
 
-/* Keyframes: Mueve el track el 50% de su ancho total */
-/* Como tenemos 2 copias del contenido, al llegar al -50% se ve igual que al 0% */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -120,17 +107,28 @@
   }
 }
 
-/* Máscara de gradiente para suavizar bordes (Efecto Awwwards) */
+/* Máscara de gradiente para bordes suaves */
 .marquee-mask {
   mask-image: linear-gradient(to right,
       transparent 0%,
       black 10%,
       black 90%,
       transparent 100%);
-  /* Soporte para Webkit (APPLE)*/
   -webkit-mask-image: linear-gradient(to right,
       transparent 0%,
       black 10%,
       black 90%,
       transparent 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation-duration: 25s;
+  }
+
+  /* Barras más visibles en móvil */
+  .h-0\.5 {
+    height: 3px !important;
+  }
 }

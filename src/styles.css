@@ -1,4 +1,4 @@
-/* PRIMERO: Todos los @import al inicio */
+/* PRIMERO: fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
@@ -7,7 +7,16 @@
 /* SEGUNDO: Tailwind */
 @import "tailwindcss";
 
-/* TERCERO: Tus estilos personalizados */
+/* Limpieza global */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Fonts */
 .font-inter {
   font-family: 'Inter', sans-serif;
 }
@@ -17,9 +26,19 @@
 }
 
 .font-nsimsun {
-  font-family: 'Noto Serif SC', 'NSimSun', serif;
+  font-family: 'Noto Serif SC', serif;
 }
 
 .font-jetbrains {
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* iOS fix */
+@media (max-width: 768px) {
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }

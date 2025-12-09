@@ -1,28 +1,4 @@
-/* Transiciones suaves para inputs y textareas */
-input,
-textarea {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-input:focus,
-textarea:focus {
-  transform: translateY(-1px);
-}
-
-/* Animación para el botón */
-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-button:not(:disabled):hover {
-  transform: translateY(-2px);
-}
-
-button:not(:disabled):active {
-  transform: translateY(0);
-}
-
-/* Animación de fade-in para mensaje de éxito */
+/* Solo animaciones custom - Todo lo demás es Tailwind */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -39,49 +15,19 @@ button:not(:disabled):active {
   animation: fade-in 0.4s ease-out;
 }
 
-/* Scroll suave para toda la página */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Estilos para mejorar accesibilidad */
-input:focus-visible,
-textarea:focus-visible,
-button:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
-}
-
-/* Animación del punto verde (disponibilidad) */
-@keyframes pulse {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-}
-
-/* Mejorar la experiencia en dispositivos móviles */
+/* Prevenir zoom en iOS */
 @media (max-width: 768px) {
 
   input,
-  textarea {
+  textarea,
+  select {
     font-size: 16px;
-    /* Evita zoom en iOS */
   }
 }
 
-/* Transición suave para cards de contacto */
-.group {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Efecto de glassmorphism mejorado */
-.backdrop-blur-xl {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* Smooth scroll */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
