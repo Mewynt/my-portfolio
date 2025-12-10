@@ -1,65 +1,75 @@
-<section id="about" class="py-32 bg-[#111113] relative overflow-x-hidden">
-  <div class="container mx-auto px-6 max-w-6xl">
+<section id="about" class="py-24 md:py-32 bg-[#111113] relative overflow-hidden">
+  <div class="container mx-auto px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 2xl:px-24 max-w-[1600px]">
 
     <!-- Título minimalista -->
-    <div class="text-center mb-20">
-      <h2 class="font-inter text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-        AboutMe
+    <div class="text-center mb-16 md:mb-20">
+      <h2 class="font-inter text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tight">
+        About Me
       </h2>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light font-jetbrains">
+      <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light font-jetbrains px-4">
         {{ descripcionCorta }}
       </p>
     </div>
 
     <!-- Grid de 2 columnas -->
-    <div class="relative md:grid md:grid-cols-2 gap-8 md:items-center mb-32">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center mb-24 md:mb-32">
 
-      <!-- Avatar -->
-      <div class="flex justify-center">
-        <div class="relative w-full max-w-xs aspect-square md:w-80 md:h-80">
-          <!-- Círculo decorativo sutil -->
-          <div class="absolute inset-0 bg-gray-900 rounded-full"></div>
+      <!-- Avatar - Foto completa -->
+      <div class="flex justify-center lg:justify-start order-1 lg:order-1">
+        <div class="relative w-full max-w-md">
 
-          <!-- Avatar -->
-          <div class="relative w-full h-full rounded-full overflow-hidden">
-            <img src="assets/images/avatar1.png" alt="GA" class="w-full h-full object-cover" (error)="imageError = true"
-              *ngIf="!imageError" />
+          <!-- Contenedor de la imagen -->
+          <div class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+            <!-- Imagen -->
+            <img src="assets/images/avatar1.png" alt="Guillermo Aliaga"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              (error)="imageError = true" *ngIf="!imageError" />
+
+            <!-- Fallback si falla la imagen -->
             <div *ngIf="imageError"
               class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-              <span class="text-gray-400 text-8xl font-light">GA</span>
+              <span class="text-gray-400 text-6xl md:text-8xl font-light font-inter">GA</span>
+            </div>
+
+            <!-- Overlay sutil al hacer hover -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500">
             </div>
           </div>
         </div>
       </div>
 
       <!-- Información -->
-      <div class="space-y-8">
+      <div class="space-y-6 md:space-y-8 order-2 lg:order-2">
 
-        <p *ngFor="let parrafo of descripcionLarga"
-          class="text-lg text-gray-300 leading-relaxed font-light font-jetbrains">
-          {{ parrafo }}
-        </p>
+        <!-- Descripción -->
+        <div class="space-y-4 md:space-y-6">
+          <p *ngFor="let parrafo of descripcionLarga"
+            class="text-base md:text-lg text-gray-300 leading-relaxed font-light font-jetbrains">
+            {{ parrafo }}
+          </p>
+        </div>
 
         <!-- Información personal minimalista -->
-        <div class="space-y-4 pt-4">
-          <div class="flex items-center gap-3 text-gray-400 font-jetbrains">
-            <span class="text-xl">📍</span>
-            <span class="font-light">{{ ubicacion }}</span>
+        <div class="space-y-3 md:space-y-4 pt-4 md:pt-6">
+          <div class="flex items-center gap-3 text-gray-400 font-jetbrains group hover:text-gray-300 transition-colors">
+            <span class="font-light text-sm md:text-base">{{ ubicacion }}</span>
           </div>
 
-          <div class="flex items-center gap-3 text-gray-400 font-jetbrains">
-            <span class="text-xl">📧</span>
-            <span class="font-light">{{ email }}</span>
+          <div class="flex items-center gap-3 text-gray-400 font-jetbrains group hover:text-gray-300 transition-colors">
+            <a [href]="'mailto:' + email" class="font-light text-sm md:text-base hover:underline">
+              {{ email }}
+            </a>
           </div>
         </div>
 
         <!-- Estadísticas limpias -->
-        <div class="md:grid md:grid-cols-3 gap-8 pt-8 border-t border-gray-700">
+        <div class="grid grid-cols-3 gap-4 md:gap-8 pt-6 md:pt-8 border-t border-gray-800">
           <div *ngFor="let stat of experiencia" class="text-center">
-            <p class="text-4xl font-bold text-white mb-2 font-jetbrains">
+            <p class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 font-jetbrains">
               {{ stat.years }}
             </p>
-            <p class="text-sm text-gray-400 font-light font-jetbrains">
+            <p class="text-xs md:text-sm text-gray-400 font-light font-jetbrains">
               {{ stat.descripcion }}
             </p>
           </div>
@@ -69,31 +79,36 @@
     </div>
 
     <!-- Intereses minimalistas (Marquesina Infinita) -->
-    <div>
-      <h3 class="font-inter text-4xl font-semibold text-white text-center mb-16 tracking-tight">
+    <div class="border-t border-gray-800 pt-16 md:pt-20">
+      <h3
+        class="font-inter text-3xl md:text-4xl lg:text-5xl font-semibold text-white text-center mb-12 md:mb-16 tracking-tight">
         Interests & Hobbies
       </h3>
 
       <!-- Contenedor con Máscara -->
       <div class="relative w-full overflow-hidden marquee-mask">
 
-        <!-- Track animado (animate-marquee-reverse para ir al otro lado, opcional) -->
-        <div class="flex gap-6 w-max animate-marquee-reverse hover:pause cursor-default">
+        <!-- Track animado (dirección reversa) -->
+        <div class="flex gap-4 md:gap-6 w-max animate-marquee-reverse hover:pause cursor-default">
 
           <!-- GRUPO 1 -->
-          <div class="flex gap-6 items-center">
-            <div *ngFor="let interes of intereses"
-              class="px-8 py-3 bg-[#1a1a1e] border border-gray-800 rounded-full text-gray-400 font-lexend whitespace-nowrap transition-all duration-300 hover:border-white hover:text-white hover:bg-white/5 flex items-center gap-3">
-              <span class="text-xl opacity-80">{{ getEmoji(interes) }}</span>
+          <div class="flex gap-4 md:gap-6 items-center">
+            <div *ngFor="let interes of intereses" class="px-6 md:px-8 py-2.5 md:py-3 bg-[#1a1a1e] border border-gray-800 rounded-full 
+                     text-gray-400 font-lexend whitespace-nowrap transition-all duration-300 
+                     hover:border-white hover:text-white hover:bg-white/10 hover:scale-105
+                     flex items-center gap-2 md:gap-3 shadow-lg">
+              <span class="text-lg md:text-xl opacity-80">{{ getEmoji(interes) }}</span>
               <span class="text-sm md:text-base font-medium tracking-wide">{{ getText(interes) }}</span>
             </div>
           </div>
 
-          <!-- GRUPO 2 (Duplicado) -->
-          <div class="flex gap-6 items-center">
-            <div *ngFor="let interes of intereses"
-              class="px-8 py-3 bg-[#1a1a1e] border border-gray-800 rounded-full text-gray-400 font-lexend whitespace-nowrap transition-all duration-300 hover:border-white hover:text-white hover:bg-white/5 flex items-center gap-3">
-              <span class="text-xl opacity-80">{{ getEmoji(interes) }}</span>
+          <!-- GRUPO 2 (Duplicado para loop infinito) -->
+          <div class="flex gap-4 md:gap-6 items-center">
+            <div *ngFor="let interes of intereses" class="px-6 md:px-8 py-2.5 md:py-3 bg-[#1a1a1e] border border-gray-800 rounded-full 
+                     text-gray-400 font-lexend whitespace-nowrap transition-all duration-300 
+                     hover:border-white hover:text-white hover:bg-white/10 hover:scale-105
+                     flex items-center gap-2 md:gap-3 shadow-lg">
+              <span class="text-lg md:text-xl opacity-80">{{ getEmoji(interes) }}</span>
               <span class="text-sm md:text-base font-medium tracking-wide">{{ getText(interes) }}</span>
             </div>
           </div>

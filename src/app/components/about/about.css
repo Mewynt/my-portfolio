@@ -1,114 +1,170 @@
-/* --- TUS ESTILOS EXISTENTES PARA BARRAS --- */
-.h-0\.5.bg-gray-900 {
-  position: relative;
+/* Prevenir overflow */
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* --- BARRAS DE PROGRESO --- */
+
+/* Contenedor de la barra (el fondo gris) */
+.h-0\.5 {
+  position: relative;
+  height: 3px !important;
+  background: rgb(17, 17, 19);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+/* La barra de progreso blanca */
 .skill-bar-shine {
   position: relative;
-  overflow: hidden;
+  height: 3px !important;
+  background: white;
+  border-radius: 9999px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  animation: growBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  /* Animación de crecimiento */
+  animation: fadeInBar 0.8s ease-out forwards;
+  opacity: 0;
 }
 
+/* Animación suave de aparición */
+@keyframes fadeInBar {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Efecto shine (brillo deslizante) - MÁS SUTIL */
 .skill-bar-shine::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -200%;
-  width: 50%;
-  height: 200%;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0.4) 60%,
+      rgba(255, 255, 255, 0.6) 50%,
       transparent 100%);
-  transform: skewX(-25deg);
-  animation: shineEffect 2.5s ease-out 1.3s 1;
-  z-index: 10;
+  animation: shineEffect 1.5s ease-out 1s 1;
+  /* Solo pasa UNA vez */
+  pointer-events: none;
 }
 
 @keyframes shineEffect {
   0% {
-    left: -200%;
+    left: -100%;
   }
 
   100% {
-    left: 200%;
+    left: 100%;
   }
 }
 
-@keyframes growBar {
-  0% {
-    width: 0% !important;
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
+/* Animación escalonada de cada skill */
 .skill-item {
   opacity: 0;
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
 .skill-item:nth-child(1) {
-  animation-delay: 0.05s;
+  animation-delay: 0.1s;
 }
 
 .skill-item:nth-child(2) {
-  animation-delay: 0.15s;
+  animation-delay: 0.2s;
 }
 
 .skill-item:nth-child(3) {
-  animation-delay: 0.25s;
+  animation-delay: 0.3s;
 }
 
 .skill-item:nth-child(4) {
-  animation-delay: 0.35s;
+  animation-delay: 0.4s;
 }
 
 .skill-item:nth-child(5) {
-  animation-delay: 0.45s;
+  animation-delay: 0.5s;
 }
 
 .skill-item:nth-child(6) {
-  animation-delay: 0.55s;
+  animation-delay: 0.6s;
 }
 
 .skill-item:nth-child(7) {
-  animation-delay: 0.65s;
+  animation-delay: 0.7s;
+}
+
+/* Delay del shine también escalonado */
+.skill-item:nth-child(1) .skill-bar-shine::before {
+  animation-delay: 0.9s;
+}
+
+.skill-item:nth-child(2) .skill-bar-shine::before {
+  animation-delay: 1.1s;
+}
+
+.skill-item:nth-child(3) .skill-bar-shine::before {
+  animation-delay: 1.3s;
+}
+
+.skill-item:nth-child(4) .skill-bar-shine::before {
+  animation-delay: 1.5s;
+}
+
+.skill-item:nth-child(5) .skill-bar-shine::before {
+  animation-delay: 1.7s;
+}
+
+.skill-item:nth-child(6) .skill-bar-shine::before {
+  animation-delay: 1.9s;
+}
+
+.skill-item:nth-child(7) .skill-bar-shine::before {
+  animation-delay: 2.1s;
 }
 
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(15px);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* --- NUEVOS ESTILOS PARA LA MARQUESINA (Running Text) --- */
+/* --- MARQUESINA (Running Text) --- */
 
-/* Animación de desplazamiento infinito */
+/* Animación de desplazamiento infinito normal */
 .animate-marquee {
   animation: marquee 35s linear infinite;
   width: max-content;
 }
 
-/* Animación invertida (opcional) */
+/* Animación invertida (para About) */
 .animate-marquee-reverse {
-  animation: marquee-reverse 35s linear infinite;
+  animation: marquee-reverse 30s linear infinite;
   width: max-content;
 }
 
-/* Pausar animación al hacer hover (mejora UX) */
+/* Pausar al hacer hover */
 .hover\:pause:hover {
   animation-play-state: paused;
 }
@@ -134,7 +190,7 @@
   }
 }
 
-/* Máscara de gradiente para suavizar bordes (Efecto Awwwards) */
+/* Máscara de gradiente para bordes suaves */
 .marquee-mask {
   mask-image: linear-gradient(to right,
       transparent 0%,
@@ -146,4 +202,32 @@
       black 10%,
       black 90%,
       transparent 100%);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+
+  /* Barras más visibles en móvil */
+  .h-0\.5,
+  .skill-bar-shine {
+    height: 3px !important;
+  }
+
+  /* Marquesinas más rápidas en móvil */
+  .animate-marquee {
+    animation-duration: 25s;
+  }
+
+  .animate-marquee-reverse {
+    animation-duration: 20s;
+  }
+}
+
+/* Para pantallas grandes (opcional) */
+@media (min-width: 1920px) {
+
+  .h-0\.5,
+  .skill-bar-shine {
+    height: 4px !important;
+  }
 }
