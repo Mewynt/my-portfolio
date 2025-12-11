@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
-import { LucideAngularModule, FileIcon } from 'lucide-angular';
 
 // Interfaz para el formulario de contacto
 interface FormularioContacto {
@@ -15,7 +14,7 @@ interface FormularioContacto {
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, LucideAngularModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
@@ -25,7 +24,6 @@ export class ContactComponent {
   mensajeEnviado = signal(false);
   mensajeError = signal(false);
   currentYear = new Date().getFullYear();
-  readonly FileIcon = FileIcon;
 
   // Configuración de EmailJS
   // IMPORTANTE: Reemplaza estos valores con tus credenciales reales de EmailJS
