@@ -57,7 +57,7 @@ export class ContactComponent {
     },
     {
       icono: '📍',
-      titulo: 'Ubicación',
+      titulo: 'Location',
       valor: 'Lima, Perú',
       link: 'https://maps.google.com/?q=Lima,Peru'
     },
