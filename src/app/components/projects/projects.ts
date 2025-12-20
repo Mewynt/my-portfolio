@@ -65,13 +65,13 @@ export class ProjectsComponent {
     },
     {
       id: 4,
-      titulo: 'Portfolio CMS',
-      descripcion: 'Sistema de gestión de contenidos para portafolios con editor visual y temas personalizables.',
-      imagen: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tecnologias: ['Vue.js', 'Laravel', 'MySQL'],
+      titulo: 'Mortgage Simulator',
+      descripcion: 'Mortgage loan simulator with amortization table using the French system, developed in PHP with real-time validation.',
+      imagen: 'assets/images/bancoaliagaportfolio.png',
+      tecnologias: ['PHP', 'Bootstrap', 'JavaScript'],
       categoria: 'fullstack',
-      githubUrl: 'https://github.com/usuario/proyecto4',
-      demoUrl: 'https://demo.proyecto4.com'
+      githubUrl: 'https://github.com/Mewynt/Project-BankMortgageLoan',
+      demoUrl: 'https://bancoaliaga.page.gd/'
     },
     {
       id: 5,
